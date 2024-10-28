@@ -38,6 +38,25 @@ Napisać program `ruler.py` rysujący "miarkę" o zadanej długości. Należy pr
 0    1    2    3    4    5    6    7    8    9   10   11   12
 ```
 
+Program może przyjąć opcjonalne pojedynczą lub podwójną wartość typu int, gdzie pierwsza wartość określa liczbę podziałek, a druga liczbę mini działek. Oznaczenie takiego wywołania może wyglądać:
+
+```bash
+$ ./ruler.py [tics [mtics]]
+```
+
+Dla przykładu wyżej skrypt został wywołany z argumentami `12 5`. Przyjmij, że wartośćią domyślną kiedy żaden argument nie jest podany jest para `10 5`. Przyjmij też, że wartość podpodziałek jest nie mniejsza niż 2, a dla `0` jest równoważne `5`, czyli
+```bash
+$ ./ruler.py 5
+$ ./ruler.py 5 5
+$ ./ruler.py 5 0
+```
+wygenerują taki sam wzór:
+```
+|....|....|....|....|....|
+0    1    2    3    4    5
+```
+
+
 ### Zadanie 3
 
 Napisać program `watch.py`, który będzie wyświetlał bieżący czas (tak ma to wyglądać: `►   14:48:31   ◄`), aktualizowany dynamicznie. Czas można odczytać na wiele sposobów, użyjmy moduł `datetime`, wtedy, bieżący punkt w czasie dostaniemy: `now = datetime.now()` i za pomocą składowych `now.hour`, `now.minute`, `now.second` mamy potrzebne wartości. Przy czym dla sekund należy sprytnie podmienić sekundy w zakresie 0..9 tak, żeby przed nimi wyświetlało się zero (np. nie `5`, tylko `05`). Znaczki na początku i końcu mają kod `chr(16)` i `chr(17)`. Zegar musi być wyświetlany w nieskończonej pętli funkcją `print()`, argument `end='\r'` zapewni nadpisywanie. Potrzebne jest jeszcze (z modułu `time`) wołanie czegoś typu `time.sleep(0.5)` w pętli, żeby niepotrzebnie nie odświeżać zbyt często bieżącego odczytu czasu.
